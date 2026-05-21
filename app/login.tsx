@@ -2,15 +2,15 @@ import { supabase } from "@/lib/supabase";
 import { Link } from "expo-router";
 import { useState } from "react";
 import {
-    ActivityIndicator,
-    Alert,
-    KeyboardAvoidingView,
-    Platform,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 export default function LoginScreen() {
@@ -44,7 +44,7 @@ export default function LoginScreen() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <View style={styles.form}>
-        <Text style={styles.titulo}>Escola</Text>
+        <Text style={styles.titulo}>Jovem Investe</Text>
         <Text style={styles.subtitulo}>Acesse sua conta</Text>
 
         <TextInput
