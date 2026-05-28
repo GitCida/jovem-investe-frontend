@@ -44,8 +44,8 @@ export default function LoginScreen() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <View style={styles.form}>
-        <Text style={styles.titulo}>Jovem Investe</Text>
-        <Text style={styles.subtitulo}>Acesse sua conta</Text>
+        <Text style={styles.title}>Jovem Investe</Text>
+        <Text style={styles.subtittle}>Acesse sua conta</Text>
 
         <TextInput
           style={styles.input}
@@ -67,14 +67,14 @@ export default function LoginScreen() {
         />
 
         <TouchableOpacity
-          style={[styles.botao, loading && styles.botaoDesabilitado]}
+          style={[styles.button, loading && styles.disabledButton]}
           onPress={handleLogin}
           disabled={loading}
         >
           {loading ? (
             <ActivityIndicator color="#fff" />
           ) : (
-            <Text style={styles.botaoTexto}>Entrar</Text>
+            <Text style={styles.textButton}>Entrar</Text>
           )}
         </TouchableOpacity>
 
@@ -96,13 +96,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
     gap: 12,
   },
-  titulo: {
+  title: {
     fontSize: 32,
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 4,
   },
-  subtitulo: {
+  subtittle: {
     fontSize: 16,
     color: "#666",
     textAlign: "center",
@@ -116,17 +116,17 @@ const styles = StyleSheet.create({
     padding: 14,
     fontSize: 16,
   },
-  botao: {
+  button: {
     backgroundColor: "#2563eb",
     borderRadius: 8,
     padding: 16,
     alignItems: "center",
     marginTop: 4,
   },
-  botaoDesabilitado: {
+  disabledButton: {
     opacity: 0.6,
   },
-  botaoTexto: {
+  textButton: {
     color: "#fff",
     fontSize: 16,
     fontWeight: "600",

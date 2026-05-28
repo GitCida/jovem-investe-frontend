@@ -2,15 +2,15 @@ import { supabase } from "@/lib/supabase";
 import { Link, router } from "expo-router";
 import { useState } from "react";
 import {
-    ActivityIndicator,
-    Alert,
-    KeyboardAvoidingView,
-    Platform,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 export default function CadastroScreen() {
@@ -59,8 +59,8 @@ export default function CadastroScreen() {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <View style={styles.form}>
-        <Text style={styles.titulo}>Criar conta</Text>
-        <Text style={styles.subtitulo}>Preencha seus dados</Text>
+        <Text style={styles.title}>Criar conta</Text>
+        <Text style={styles.subtittle}>Preencha seus dados</Text>
 
         <TextInput
           style={styles.input}
@@ -88,14 +88,14 @@ export default function CadastroScreen() {
         />
 
         <TouchableOpacity
-          style={[styles.botao, loading && styles.botaoDesabilitado]}
+          style={[styles.button, loading && styles.disabledButton]}
           onPress={handleCadastro}
           disabled={loading}
         >
           {loading ? (
             <ActivityIndicator color="#fff" />
           ) : (
-            <Text style={styles.botaoTexto}>Cadastrar</Text>
+            <Text style={styles.textButton}>Cadastrar</Text>
           )}
         </TouchableOpacity>
 
@@ -117,13 +117,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 24,
     gap: 12,
   },
-  titulo: {
+  title: {
     fontSize: 32,
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 4,
   },
-  subtitulo: {
+  subtittle: {
     fontSize: 16,
     color: "#666",
     textAlign: "center",
@@ -137,17 +137,17 @@ const styles = StyleSheet.create({
     padding: 14,
     fontSize: 16,
   },
-  botao: {
+  button: {
     backgroundColor: "#2563eb",
     borderRadius: 8,
     padding: 16,
     alignItems: "center",
     marginTop: 4,
   },
-  botaoDesabilitado: {
+  disabledButton: {
     opacity: 0.6,
   },
-  botaoTexto: {
+  textButton: {
     color: "#fff",
     fontSize: 16,
     fontWeight: "600",
