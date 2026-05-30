@@ -1,10 +1,33 @@
 import { useAuth } from "@/context/AuthContext";
+import { supabase } from "@/lib/supabase"; 
+import { useState, useEffect } from "react"; 
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function HomeScreen() {
   const { user, signOut } = useAuth();
+  
+  const [nomeExibido, setNomeExibido] = useState<string>("Carregando...");
 
-  const nomeExibido = user?.email?.split("@")[0];
+  useEffect(() => {
+    async function buscarUsername() {
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("username")
+        .eq("id", user.id)
+        .single(); 
+
+      if (!error && data?.username) {
+        setNomeExibido(data.username);
+      } else {
+        const emailFallback = user.email?.split("@")[0] || "Usuário";
+        setNomeExibido(emailFallback);
+      }
+    }
+
+    buscarUsername();
+  }, [user]);
 
   return (
     <View style={styles.container}>
