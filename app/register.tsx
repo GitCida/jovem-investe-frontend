@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, router } from "expo-router";
 import { useState, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { Ionicons } from "@expo/vector-icons";
 import {
   ActivityIndicator,
   KeyboardAvoidingView,
@@ -19,11 +20,12 @@ import { registerSchema, RegisterFormData } from "@/lib/validation";
 export default function RegisterScreen() {
   const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
+  const [secureText, setSecureText] = useState(true);
+  const [secureConfirmText, setSecureConfirmText] = useState(true);
 
   const {
     control,
     handleSubmit,
-    setError,
     formState: { errors },
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
@@ -141,16 +143,28 @@ export default function RegisterScreen() {
           control={control}
           name="password"
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              style={[styles.input, errors.password && styles.inputError]}
-              placeholder="* * * * * *"
-              value={value}
-              onChangeText={onChange}
-              onBlur={onBlur}
-              secureTextEntry
-              autoComplete="password"
-              textContentType="password"
-            />
+            <View style={[styles.inputContainer, errors.password && styles.inputError]}>
+              <TextInput
+                style={styles.inputPassword}
+                placeholder="* * * * * *"
+                value={value}
+                onChangeText={onChange}
+                onBlur={onBlur}
+                secureTextEntry={secureText}
+                autoComplete="password"
+                textContentType="password"
+              />
+              <TouchableOpacity
+                style={styles.eyeButton}
+                onPress={() => setSecureText(!secureText)}
+              >
+                <Ionicons
+                  name={secureText ? "eye-off-outline" : "eye-outline"}
+                  size={22}
+                  color="#666"
+                />
+              </TouchableOpacity>
+            </View>
           )}
         />
         {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
@@ -160,16 +174,28 @@ export default function RegisterScreen() {
           control={control}
           name="confirmPassword"
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              style={[styles.input, errors.confirmPassword && styles.inputError]}
-              placeholder="* * * * * *"
-              value={value}
-              onChangeText={onChange}
-              onBlur={onBlur}
-              secureTextEntry
-              autoComplete="off"
-              textContentType="none"
-            />
+            <View style={[styles.inputContainer, errors.confirmPassword && styles.inputError]}>
+              <TextInput
+                style={styles.inputPassword}
+                placeholder="* * * * * *"
+                value={value}
+                onChangeText={onChange}
+                onBlur={onBlur}
+                secureTextEntry={secureConfirmText}
+                autoComplete="off"
+                textContentType="none"
+              />
+              <TouchableOpacity
+                style={styles.eyeButton}
+                onPress={() => setSecureConfirmText(!secureConfirmText)}
+              >
+                <Ionicons
+                  name={secureConfirmText ? "eye-off-outline" : "eye-outline"}
+                  size={22}
+                  color="#666"
+                />
+              </TouchableOpacity>
+            </View>
           )}
         />
         {errors.confirmPassword && <Text style={styles.errorText}>{errors.confirmPassword.message}</Text>}
@@ -252,6 +278,24 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 14,
     fontSize: 16,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#ddd",
+    borderRadius: 8,
+  },
+  inputPassword: {
+    flex: 1,
+    padding: 14,
+    fontSize: 16,
+  },
+  eyeButton: {
+    paddingHorizontal: 14,
+    justifyContent: "center",
+    alignItems: "center",
   },
   inputError: {
     borderColor: "#ef4444",

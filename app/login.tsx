@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "expo-router";
 import { useState, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { Ionicons } from "@expo/vector-icons";
 import {
   ActivityIndicator,
   KeyboardAvoidingView,
@@ -19,6 +20,7 @@ import { loginSchema, LoginFormData } from "@/lib/validation";
 export default function LoginScreen() {
   const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
+  const [secureText, setSecureText] = useState(true);
 
   const {
     control,
@@ -96,26 +98,36 @@ export default function LoginScreen() {
         />
         {errors.email && <Text style={styles.errorText}>{errors.email.message}</Text>}
 
-        {/* CAMPO: SENHA */}
         <Text style={styles.label}>Senha:</Text>
         <Controller
           control={control}
           name="password"
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput
-              style={[styles.input, errors.password && styles.inputError]}
-              placeholder="* * * * * *"
-              value={value}
-              onChangeText={onChange}
-              onBlur={onBlur}
-              secureTextEntry
-              autoComplete="password"
-            />
+            <View style={[styles.inputContainer, errors.password && styles.inputError]}>
+              <TextInput
+                style={styles.inputPassword}
+                placeholder="* * * * * *"
+                value={value}
+                onChangeText={onChange}
+                onBlur={onBlur}
+                secureTextEntry={secureText}
+                autoComplete="password"
+              />
+              <TouchableOpacity
+                style={styles.eyeButton}
+                onPress={() => setSecureText(!secureText)}
+              >
+                <Ionicons
+                  name={secureText ? "eye-off-outline" : "eye-outline"}
+                  size={22}
+                  color="#666"
+                />
+              </TouchableOpacity>
+            </View>
           )}
         />
         {errors.password && <Text style={styles.errorText}>{errors.password.message}</Text>}
 
-        {/* BOTÃO SUBMIT */}
         <TouchableOpacity
           style={[styles.button, loading && styles.disabledButton]}
           onPress={handleSubmit(handleLogin)}
@@ -194,6 +206,24 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 14,
     fontSize: 16,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderWidth: 1,
+    borderColor: "#ddd",
+    borderRadius: 8,
+  },
+  inputPassword: {
+    flex: 1,
+    padding: 14,
+    fontSize: 16,
+  },
+  eyeButton: {
+    paddingHorizontal: 14,
+    justifyContent: "center",
+    alignItems: "center",
   },
   inputError: {
     borderColor: "#ef4444",
