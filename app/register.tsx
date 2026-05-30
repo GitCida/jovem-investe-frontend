@@ -56,7 +56,13 @@ export default function RegisterScreen() {
 
     if (authError) {
       setLoading(false);
-      setNotification("Ops! Algo deu errado.\nTente novamente mais tarde.");
+
+      if (authError.message.includes("User already registered")) {
+        setNotification("Este e-mail já está cadastrado.\nTente fazer login.");
+      } else {
+        setNotification("Ops! Algo deu errado.\nTente novamente mais tarde.");
+      }
+
       return;
     }
 
@@ -71,14 +77,6 @@ export default function RegisterScreen() {
         ]);
 
       setLoading(false);
-
-      if (profileError) {
-        setError("email", {
-          type: "manual",
-          message: "Este e-mail já existe. Tente outro ou faça login.",
-        });
-        return;
-      }
 
       if (authData.session) {
         router.replace("/(tabs)");
