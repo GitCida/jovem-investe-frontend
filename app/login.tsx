@@ -45,7 +45,7 @@ export default function LoginScreen() {
     >
       <View style={styles.form}>
         <Text style={styles.title}>Jovem Investe</Text>
-        <Text style={styles.subtittle}>Acesse sua conta</Text>
+        <Text style={styles.subtitle}>Acesse sua conta</Text>
 
         <TextInput
           style={styles.input}
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 4,
   },
-  subtittle: {
+  subtitle: {
     fontSize: 16,
     color: "#666",
     textAlign: "center",

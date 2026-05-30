@@ -60,7 +60,7 @@ export default function CadastroScreen() {
     >
       <View style={styles.form}>
         <Text style={styles.title}>Criar conta</Text>
-        <Text style={styles.subtittle}>Preencha seus dados</Text>
+        <Text style={styles.subtitle}>Preencha seus dados</Text>
 
         <TextInput
           style={styles.input}
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 4,
   },
-  subtittle: {
+  subtitle: {
     fontSize: 16,
     color: "#666",
     textAlign: "center",
