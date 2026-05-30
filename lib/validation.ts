@@ -6,6 +6,7 @@ export const messages = {
     invalidUsername: 'O nome de usuário deve conter apenas letras, números e _',
     requiredEmail: 'O email é obrigatório',
     invalidEmail: 'Email inválido',
+    requiredPassword: 'A senha é obrigatória',
     passwordMinLength: 'A senha deve conter pelo menos 6 caracteres',
     confirmPassword: 'As senhas não coincidem',
 } as const;
@@ -37,4 +38,10 @@ export const registerSchema = z.object({
     path: ['confirmPassword'], 
 });
 
+export const loginSchema = z.object({
+    email: emailField,
+    password: z.string().min(1, messages.requiredPassword),
+});
+
+export type LoginFormData = z.input<typeof loginSchema>;
 export type RegisterFormData = z.input<typeof registerSchema>;
