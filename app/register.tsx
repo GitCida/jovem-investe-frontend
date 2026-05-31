@@ -60,7 +60,7 @@ export default function RegisterScreen() {
       setLoading(false);
 
       if (authError.message.includes("User already registered")) {
-        setNotification("Este e-mail já está cadastrado.\nTente fazer login.");
+        setNotification("Este e-mail já está cadastrado.\nTente outro ou faça login.");
       } else {
         setNotification("Ops! Algo deu errado.\nTente novamente mais tarde.");
       }
