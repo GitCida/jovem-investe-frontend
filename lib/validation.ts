@@ -5,7 +5,7 @@ export const messages = {
     usernameMaxLength: 'O nome de usuário deve conter no máximo 20 caracteres',
     invalidUsername: 'O nome de usuário deve conter apenas letras, números e _',
     requiredEmail: 'O email é obrigatório',
-    invalidEmail: 'Email inválido',
+    invalidEmail: 'Insira um email válido',
     requiredPassword: 'A senha é obrigatória',
     passwordMinLength: 'A senha deve conter pelo menos 6 caracteres',
     confirmPassword: 'As senhas não coincidem',
