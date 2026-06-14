@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const PRIMARY = "#0D47D9";
+export const PRIMARY = "#031eca";
 export const ACCENT = "#FFC400";
 
 export const styles = StyleSheet.create({
