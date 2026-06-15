@@ -2,6 +2,7 @@ import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/lib/supabase"; 
 import { useState, useEffect } from "react"; 
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import BottomNavBar from "@/components/bottom-nav-bar";
 
 export default function HomeScreen() {
   const { user, signOut } = useAuth();
@@ -38,6 +39,8 @@ export default function HomeScreen() {
       <TouchableOpacity style={styles.botaoSair} onPress={signOut}>
         <Text style={styles.botaoTexto}>Sair</Text>
       </TouchableOpacity>
+
+      <BottomNavBar activeRoute="index" />
     </View>
   );
 }
