@@ -1,44 +1,54 @@
-import { useAuth } from "@/context/AuthContext";
-import { supabase } from "@/lib/supabase"; 
-import { useState, useEffect } from "react"; 
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import BottomNavBar from "@/components/bottom-nav-bar";
+import { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { User } from 'lucide-react-native';
+import { supabase } from '@/lib/supabase';
+import BottomNavBar from '@/components/bottom-nav-bar';
+import Header from '@/components/header';
 
 export default function HomeScreen() {
-  const { user, signOut } = useAuth();
-  
-  const [nomeExibido, setNomeExibido] = useState<string>("Carregando...");
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
-    async function buscarUsername() {
-      if (!user) return;
+    fetchProfile();
+  }, []);
 
-      const { data, error } = await supabase
-        .from("profiles")
-        .select("username")
-        .eq("id", user.id)
-        .single(); 
+  async function fetchProfile() {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
 
-      if (!error && data?.username) {
-        setNomeExibido(data.username);
-      } else {
-        const emailFallback = user.email?.split("@")[0] || "Usuário";
-        setNomeExibido(emailFallback);
-      }
-    }
+    const { data } = await supabase
+      .from('profiles')
+      .select('username')
+      .eq('id', user.id)
+      .single();
 
-    buscarUsername();
-  }, [user]);
+    if (data) setUsername(data.username);
+  }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.saudacao}>Olá,</Text>
-      <Text style={styles.nome}>{nomeExibido} 👋</Text>
-      <Text style={styles.subtitulo}>Bem-vindo ao sistema da escola.</Text>
 
-      <TouchableOpacity style={styles.botaoSair} onPress={signOut}>
-        <Text style={styles.botaoTexto}>Sair</Text>
-      </TouchableOpacity>
+      <Header />
+
+      <ScrollView
+        style={styles.content}
+        contentContainerStyle={styles.contentContainer}
+      >
+        <Text style={styles.greeting}>
+          Bem-vindo(a), {username || '...'}!
+        </Text>
+
+        <View style={styles.card}>
+          <View style={styles.cardText}>
+            <Text style={styles.cardModule}>Módulo atual: juros simples</Text>
+            <Text style={styles.cardExercise}>Exercício atual: calcule o tempo</Text>
+          </View>
+          <TouchableOpacity style={styles.cardButton}>
+            <User size={28} color="#1E3A8A" />
+            <Text style={styles.cardButtonLabel}>Exercitar</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
 
       <BottomNavBar activeRoute="index" />
     </View>
@@ -48,33 +58,51 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 24,
-    gap: 8,
+    backgroundColor: '#FFFFFF',
   },
-  saudacao: {
-    fontSize: 20,
-    color: "#666",
+  content: {
+    flex: 1,
   },
-  nome: {
-    fontSize: 32,
-    fontWeight: "bold",
+  contentContainer: {
+    padding: 16,
+    paddingBottom: 100,
   },
-  subtitulo: {
-    fontSize: 16,
-    color: "#888",
-    marginBottom: 32,
+  greeting: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: '#082A7A',
+    marginBottom: 16,
   },
-  botaoSair: {
-    backgroundColor: "#dc2626",
-    borderRadius: 8,
-    paddingHorizontal: 32,
-    paddingVertical: 12,
+  card: {
+    backgroundColor: '#FFC400',
+    borderRadius: 12,
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
-  botaoTexto: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
+  cardText: {
+    flex: 1,
+    marginRight: 12,
+  },
+  cardModule: {
+    fontSize: 13,
+    color: '#1E3A8A',
+    marginBottom: 4,
+  },
+  cardExercise: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: '#1E3A8A',
+  },
+  cardButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
+  },
+  cardButtonLabel: {
+    fontSize: 12,
+    color: '#1E3A8A',
+    fontWeight: '600',
   },
 });
