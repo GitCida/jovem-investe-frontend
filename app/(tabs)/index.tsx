@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { User, LogOut } from 'lucide-react-native';
+import { NotebookPen, LogOut } from 'lucide-react-native';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/context/AuthContext';
 import BottomNavBar from '@/components/bottom-nav-bar';
 import Header from '@/components/header';
+
+const MODULES = [
+  { id: 'porcentagem', label: 'PORCENTAGEM' },
+  { id: 'juros-simples', label: 'JUROS SIMPLES' },
+];
 
 export default function HomeScreen() {
   const [username, setUsername] = useState('');
@@ -29,7 +34,6 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-
       <Header />
 
       <ScrollView
@@ -40,23 +44,22 @@ export default function HomeScreen() {
           Bem-vindo(a), {username || '...'}!
         </Text>
 
-        <View style={styles.card}>
-          <View style={styles.cardText}>
-            <Text style={styles.cardModule}>Módulo atual: juros simples</Text>
-            <Text style={styles.cardExercise}>Exercício atual: calcule o tempo</Text>
-          </View>
-          <TouchableOpacity style={styles.cardButton}>
-            <User size={28} color="#1E3A8A" />
-            <Text style={styles.cardButtonLabel}>Exercitar</Text>
-          </TouchableOpacity>
-        </View>
+        <Text style={styles.sectionTitle}>Escolha um módulo</Text>
 
-        {/* Botão temporário de teste */}
+        {MODULES.map((mod) => (
+          <TouchableOpacity key={mod.id} style={styles.moduleButton}>
+            <Text style={styles.moduleLabel}>{mod.label}</Text>
+            <View style={styles.moduleAction}>
+              <NotebookPen size={24} color="#1E3A8A" />
+              <Text style={styles.moduleActionLabel}>Estudar</Text>
+            </View>
+          </TouchableOpacity>
+        ))}
+
         <TouchableOpacity style={styles.signOutButton} onPress={signOut}>
           <LogOut size={18} color="#fff" />
           <Text style={styles.signOutText}>Sair</Text>
         </TouchableOpacity>
-
       </ScrollView>
 
       <BottomNavBar activeRoute="index" />
@@ -82,34 +85,34 @@ const styles = StyleSheet.create({
     color: '#082A7A',
     marginBottom: 16,
   },
-  card: {
-    backgroundColor: '#FFC400',
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#082A7A',
+    marginBottom: 12,
+  },
+  moduleButton: {
+    backgroundColor: '#FFF3B0',
     borderRadius: 12,
+    borderWidth: 2,
+    borderColor: '#FFC400',
     padding: 16,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginBottom: 12,
   },
-  cardText: {
-    flex: 1,
-    marginRight: 12,
-  },
-  cardModule: {
-    fontSize: 13,
-    color: '#1E3A8A',
-    marginBottom: 4,
-  },
-  cardExercise: {
-    fontSize: 15,
+  moduleLabel: {
+    fontSize: 16,
     fontWeight: '700',
     color: '#1E3A8A',
   },
-  cardButton: {
+  moduleAction: {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 4,
   },
-  cardButtonLabel: {
+  moduleActionLabel: {
     fontSize: 12,
     color: '#1E3A8A',
     fontWeight: '600',
