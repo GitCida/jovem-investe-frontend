@@ -5,10 +5,11 @@ import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/context/AuthContext';
 import BottomNavBar from '@/components/bottom-nav-bar';
 import Header from '@/components/header';
+import { router } from 'expo-router';
 
 const MODULES = [
-  { id: 'porcentagem', label: 'PORCENTAGEM' },
-  { id: 'juros-simples', label: 'JUROS SIMPLES' },
+  { id: 'porcentagem', label: 'PORCENTAGEM', route: '/(tabs)/percentage' },
+  { id: 'juros-simples', label: 'JUROS SIMPLES', route: '/(tabs)/simple-interest' },
 ];
 
 export default function HomeScreen() {
@@ -47,7 +48,7 @@ export default function HomeScreen() {
         <Text style={styles.sectionTitle}>Escolha um módulo</Text>
 
         {MODULES.map((mod) => (
-          <TouchableOpacity key={mod.id} style={styles.moduleButton}>
+          <TouchableOpacity key={mod.id} style={styles.moduleButton} onPress={() => router.push(mod.route as any)}>
             <Text style={styles.moduleLabel}>{mod.label}</Text>
             <View style={styles.moduleAction}>
               <NotebookPen size={24} color="#1E3A8A" />
