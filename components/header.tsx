@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     borderBottomLeftRadius: 24,
     borderBottomRightRadius: 24,
-    shadowColor: '#000',
+    elevation: 12,
   },
   avatar: {
     width: 44,
