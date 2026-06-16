@@ -1,5 +1,5 @@
 import { AuthProvider, useAuth } from "@/context/AuthContext";
-import { Stack, router, useSegments } from "expo-router";
+import { Slot, router, useSegments } from "expo-router";
 import { useEffect } from "react";
 import { ActivityIndicator, View } from "react-native";
 
@@ -27,17 +27,12 @@ function RouteGuard() {
     );
   }
 
-  return null;
+  return <Slot />;
 }
 
 export default function RootLayout() {
   return (
     <AuthProvider>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="login" />
-        <Stack.Screen name="register" />
-        <Stack.Screen name="(tabs)" />
-      </Stack>
       <RouteGuard />
     </AuthProvider>
   );
