@@ -2,8 +2,10 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import BottomNavBar from '@/components/bottom-nav-bar';
 import Header from '@/components/header';
 import { BookOpen, Wrench } from 'lucide-react-native';
+import { router } from 'expo-router';
 
 export default function SimpleInterestScreen() {
+
   return (
     <View style={styles.container}>
       <Header />
@@ -15,12 +17,12 @@ export default function SimpleInterestScreen() {
           <View style={styles.bannerImagePlaceholder} />
         </View>
 
-        <TouchableOpacity style={styles.buttonOutline}>
+        <TouchableOpacity style={styles.buttonOutline} onPress={() => router.push('(tabs)/simple-interest-summary' as any)}>
           <BookOpen size={20} color="#1E3A8A" />
           <Text style={styles.buttonOutlineText}>Leia resumos</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonYellow}>
+        <TouchableOpacity style={styles.buttonYellow} onPress={() => router.push('(tabs)/simple-interest-exercises' as any)}>
           <Wrench size={20} color="#e6b000" />
           <Text style={styles.buttonYellowText}>Pratique com exercícios</Text>
         </TouchableOpacity>
