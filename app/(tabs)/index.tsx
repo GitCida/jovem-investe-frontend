@@ -10,6 +10,7 @@ import { router } from 'expo-router';
 const MODULES = [
   { id: 'porcentagem', label: 'PORCENTAGEM', route: '/(tabs)/percentage' },
   { id: 'juros-simples', label: 'JUROS SIMPLES', route: '/(tabs)/simple-interest' },
+  { id: 'juros-compostos', label: 'JUROS COMPOSTOS', route: '/(tabs)/compound-interest' },
 ];
 
 export default function HomeScreen() {
