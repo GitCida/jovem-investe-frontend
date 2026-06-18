@@ -3,7 +3,7 @@ import { Home, NotebookPen, BarChart3, Calculator } from 'lucide-react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-type Route = 'index' | 'exercises' | 'dashboard' | 'calculator' | 'simple-interest' | 'percentage' | 'simple-interest-summary' | 'simple-interest-exercises' | 'percentage-summary' | 'percentage-exercises';
+type Route = 'index' | 'exercicios' | 'dashboard' | 'calculator' | 'simple-interest' | 'percentage' | 'simple-interest-summary' | 'simple-interest-exercises' | 'percentage-summary' | 'percentage-exercises';
 
 type Props = {
   activeRoute: Route;
@@ -25,21 +25,21 @@ export default function BottomNavBar({ activeRoute }: Props) {
         />
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.iconWrapper}>
+      <TouchableOpacity style={styles.iconWrapper} onPress={() => router.push('/exercicios')}>
         <NotebookPen
           size={26}
-          color={activeRoute === 'exercises' ? ACTIVE_COLOR : INACTIVE_COLOR}
+          color={activeRoute === 'exercicios' ? ACTIVE_COLOR : INACTIVE_COLOR}
         />
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.iconWrapper}>
+      <TouchableOpacity style={styles.iconWrapper} onPress={() => router.push('/dashboard')}>
         <BarChart3
           size={26}
           color={activeRoute === 'dashboard' ? ACTIVE_COLOR : INACTIVE_COLOR}
         />
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.iconWrapper}>
+      <TouchableOpacity style={styles.iconWrapper} onPress={() => router.push('/calculator')}>
         <Calculator
           size={26}
           color={activeRoute === 'calculator' ? ACTIVE_COLOR : INACTIVE_COLOR}
