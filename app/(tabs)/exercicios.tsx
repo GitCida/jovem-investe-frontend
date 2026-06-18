@@ -11,8 +11,6 @@ const COLORS = {
   gold: '#FFC400',
 };
 
-// Troque "icon" por "letters" quando o exercício não tiver um ícone
-// específico do lucide e você quiser exibir uma sigla (ex: "JS", "JC").
 const EXERCISES: {
   id: string;
   label: string;
