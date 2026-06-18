@@ -2,17 +2,17 @@ import { View, Text, StyleSheet } from 'react-native';
 import Header from '@/components/header';
 import BottomNavBar from '@/components/bottom-nav-bar';
 
-export default function SimpleInterestExercisesScreen() {
+export default function DiscountExercisesScreen() {
   return (
     <View style={styles.container}>
       <Header />
 
       <View style={styles.content}>
-        <Text style={styles.title}>EXERCÍCIOS DE JUROS SIMPLES</Text>
+        <Text style={styles.title}>EXERCÍCIOS DE DESCONTOS</Text>
         <Text style={styles.placeholder}>Em construção 🚧</Text>
       </View>
 
-      <BottomNavBar activeRoute="simple-interest-exercises" />
+      <BottomNavBar activeRoute="discount-exercises" />
     </View>
   );
 }
