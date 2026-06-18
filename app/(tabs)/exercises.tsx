@@ -97,7 +97,7 @@ export default function ExercisesScreen() {
         })}
       </ScrollView>
 
-      <BottomNavBar activeRoute="exercicios" />
+      <BottomNavBar activeRoute="exercises" />
     </View>
   );
 }
