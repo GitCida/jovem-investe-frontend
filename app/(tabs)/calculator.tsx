@@ -52,7 +52,6 @@ export default function CompoundInterestScreen() {
       <ScrollView style={styles.content} contentContainerStyle={styles.contentContainer}>
         <Text style={styles.pageTitle}>SIMULADOR JUROS COMPOSTOS</Text>
 
-        {/* Card de entrada */}
         <View style={styles.card}>
           <View style={styles.cardHeader}>
             <Calculator size={20} color="#FFC400" />
@@ -109,7 +108,6 @@ export default function CompoundInterestScreen() {
           </View>
         </View>
 
-        {/* Card de resultado */}
         <View style={styles.card}>
           <View style={styles.resultRow}>
             <Text style={styles.resultMainLabel}>MONTANTE FINAL ( M )</Text>
@@ -156,7 +154,6 @@ export default function CompoundInterestScreen() {
           </View>
         </View>
 
-        {/* Fórmula */}
         <View style={styles.formulaCard}>
           <Text style={styles.formulaTitle}>Fórmula</Text>
           <Text style={styles.formulaText}>M = C × (1 + i)ᵗ</Text>
@@ -195,14 +192,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
     borderWidth: 2,
-    borderColor: '#0D47D9',
+    borderColor: '#082A7A',
     padding: 16,
     gap: 10,
   },
   cardHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#0D47D9',
+    backgroundColor: '#082A7A',
     borderRadius: 8,
     padding: 10,
     gap: 8,
@@ -264,7 +261,7 @@ const styles = StyleSheet.create({
   },
   calcButton: {
     flex: 1,
-    backgroundColor: '#0D47D9',
+    backgroundColor: '#082A7A',
     borderRadius: 24,
     paddingVertical: 14,
     alignItems: 'center',
@@ -279,12 +276,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 24,
     borderWidth: 2,
-    borderColor: '#0D47D9',
+    borderColor: '#082A7A',
     paddingVertical: 14,
     alignItems: 'center',
   },
   clearButtonText: {
-    color: '#0D47D9',
+    color: '#082A7A',
     fontWeight: '800',
     fontSize: 15,
   },

@@ -15,7 +15,7 @@ const usernameField = z
     .string()
     .min(3, messages.usernameMinLength)
     .max(20, messages.usernameMaxLength)
-    .regex(/^[a-zA-Z0-9_ ]+$/, messages.invalidUsername)
+    .regex(/^[a-zA-Z0-9À-ÿ_\s]+$/, messages.invalidUsername)
     .transform((val) => val.trim())
 
 const emailField = z
