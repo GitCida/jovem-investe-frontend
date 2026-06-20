@@ -8,69 +8,60 @@ export default function SimpleInterestSummaryScreen() {
       <Header />
 
       <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
-        <Text style={styles.pageTitle}>ENTENDA PORCENTAGEM</Text>
+        <Text style={styles.pageTitle}>ENTENDA JUROS SIMPLES</Text>
 
-        <Text style={styles.sectionTitle}>O que é porcentagem?</Text>
+        <Text style={styles.sectionTitle}>O que é juros simples?</Text>
         <Text style={styles.paragraph}>
-          A porcentagem (ou percentagem) é uma razão cujo denominador é igual a 100. O termo
-          significa literalmente "por cada centena" e é representado pelo símbolo %.
+          Juros Simples é um sistema de cálculo em que o percentual de juro incide apenas sobre
+          o valor inicial (chamado de capital). Isso significa que o valor dos juros é fixo e
+          igual em todos os períodos, pois ele não acumula como nos juros compostos.
         </Text>
+
+        <Text style={styles.sectionTitle}>Elementos Básicos</Text>
         <Text style={styles.paragraph}>
-          Ela é utilizada para comparar grandezas, calcular descontos, acréscimos, lucros, juros
-          e para analisar dados estatísticos de forma mais intuitiva.
+          Para qualquer cálculo de juros simples, você precisa conhecer quatro variáveis:
+        </Text>
+        <Text style={styles.bulletItem}>
+          <Text style={styles.bold}>Capital (C):</Text> O valor inicial investido ou emprestado.
+        </Text>
+        <Text style={styles.bulletItem}>
+          <Text style={styles.bold}>Taxa de Juros (i):</Text> O percentual cobrado ou rendido por
+          período (ex: 2% ao mês, 10% ao ano). Deve ser usada na forma decimal nos cálculos
+          (ex: 2% = 0,02).
+        </Text>
+        <Text style={styles.bulletItem}>
+          <Text style={styles.bold}>Tempo (t):</Text> A duração da operação. Atenção: a taxa (i)
+          e o tempo (t) devem estar sempre na mesma unidade (ex: taxa ao mês e tempo em meses).
+        </Text>
+        <Text style={styles.bulletItem}>
+          <Text style={styles.bold}>Montante (M):</Text> O valor total ao final do período
+          (Capital inicial + Juros).
         </Text>
 
-        <Text style={styles.sectionTitle}>As três formas de representar</Text>
-        <Text style={styles.paragraph}>
-          Qualquer valor percentual pode ser escrito de três maneiras diferentes. Saber alternar
-          entre elas facilita muito os cálculos:
+        <Text style={styles.sectionTitle}>As fórmulas fundamentais</Text>
+        <Text style={styles.numberedItem}>
+          <Text style={styles.bold}>1. Para encontrar o valor dos juros (J) acumulados:{'\n'}</Text>
+          <Text style={styles.formula}>J = C . i . t</Text>
         </Text>
         <Text style={styles.numberedItem}>
-          <Text style={styles.bold}>1. Forma Percentual:</Text> É a representação utilizando o símbolo %.
-          {'\n'}<Text style={styles.example}>Exemplo: 25%</Text>
+          <Text style={styles.bold}>2. Para encontrar o montante (M) final:{'\n'}</Text>
+          <Text style={styles.formula}>M = C + J</Text>
         </Text>
         <Text style={styles.numberedItem}>
-          <Text style={styles.bold}>2. Forma Fracionária:</Text> É uma fração onde o numerador é o número e o denominador é sempre 100.
-          {'\n'}<Text style={styles.example}>Exemplo: 25/100</Text>
-        </Text>
-        <Text style={styles.numberedItem}>
-          <Text style={styles.bold}>3. Forma Decimal:</Text> É o resultado da divisão do número por 100.
-          {'\n'}<Text style={styles.example}>Exemplo: 0,25</Text>
+          <Text style={styles.bold}>3. Ou, combinando as duas fórmulas:{'\n'}</Text>
+          <Text style={styles.formula}>M = C . (1 + i . t)</Text>
         </Text>
 
-        <Text style={styles.sectionTitle}>Como calcular porcentagem (Casos Principais)</Text>
-        <Text style={styles.numberedItem}>
-          <Text style={styles.bold}>1. Calcular a porcentagem de um valor fixo{'\n'}</Text>
-          Para encontrar um valor percentual de um total, transforma-se a porcentagem em fração
-          ou decimal e multiplica-se pelo valor total.
-        </Text>
-        <Text style={styles.numberedItem}>
-          <Text style={styles.bold}>2. Descobrir que porcentagem um valor representa de outro{'\n'}</Text>
-          Para saber a taxa percentual de uma parte em relação ao todo, divide-se a parte pelo
-          todo e multiplica-se o resultado por 100.
-        </Text>
-        <Text style={styles.numberedItem}>
-          <Text style={styles.bold}>3. Aumentos e Descontos Percentuais{'\n'}</Text>
-          Para aplicar variações sobre um valor inicial, pode-se usar o conceito de Fator de
-          Multiplicação:{'\n'}
-          • <Text style={styles.bold}>Aumento:</Text> Soma-se a taxa a 100% (1 + i){'\n'}
-          • <Text style={styles.bold}>Desconto:</Text> Subtrai-se a taxa a 100% (1 - i)
-        </Text>
-
-        <Text style={styles.sectionTitle}>Dicas rápidas de cálculo mental</Text>
+        <Text style={styles.sectionTitle}>Características principais</Text>
         <Text style={styles.bulletItem}>
-          <Text style={styles.bold}>Calcular 10%:</Text> Basta mover a vírgula uma casa para a esquerda (dividir por 10).{'\n'}
-          <Text style={styles.example}>Exemplo: 10% de 350 é 35.</Text>
+          <Text style={styles.bold}>Crescimento Linear:</Text> O valor aumenta de forma constante
+          a cada mês/ano.
         </Text>
         <Text style={styles.bulletItem}>
-          <Text style={styles.bold}>Calcular 1%:</Text> Basta mover a vírgula duas casas para a esquerda (dividir por 100).{'\n'}
-          <Text style={styles.example}>Exemplo: 1% de 350 é 3,5.</Text>
-        </Text>
-        <Text style={styles.bulletItem}>
-          <Text style={styles.bold}>Calcular 50%:</Text> É sempre a metade do valor.
-        </Text>
-        <Text style={styles.bulletItem}>
-          <Text style={styles.bold}>Calcular 25%:</Text> É a metade da metade (ou dividir por 4).
+          <Text style={styles.bold}>Pouco usado no mercado financeiro moderno:</Text> É mais
+          comum em situações cotidianas, como compras parceladas sem capitalização, atrasos de
+          contas de consumo (água, luz) ou empréstimos informais. O mercado financeiro geral
+          prefere os juros compostos ("juros sobre juros").
         </Text>
       </ScrollView>
 
@@ -129,5 +120,10 @@ const styles = StyleSheet.create({
   example: {
     color: '#6B7280',
     fontStyle: 'italic',
+  },
+  formula: {
+    color: '#082A7A',
+    fontWeight: '600',
+    fontSize: 16,
   },
 });
