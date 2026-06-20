@@ -1,13 +1,14 @@
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { User } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { router } from 'expo-router';
 
 export default function Header() {
   const insets = useSafeAreaInsets();
 
   return (
     <View style={[styles.container, { paddingTop: insets.top + 8 }]}>
-      <TouchableOpacity style={styles.avatar}>
+      <TouchableOpacity style={styles.avatar} onPress={() => { router.push('/(tabs)/profile' as any) }}>
         <User size={28} color="#FFFFFF" />
       </TouchableOpacity>
     </View>

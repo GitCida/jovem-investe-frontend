@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { NotebookPen, LogOut } from 'lucide-react-native';
+import { NotebookPen } from 'lucide-react-native';
 import { supabase } from '@/lib/supabase';
-import { useAuth } from '@/context/AuthContext';
 import BottomNavBar from '@/components/bottom-nav-bar';
 import Header from '@/components/header';
 import { router } from 'expo-router';
@@ -14,7 +13,6 @@ const MODULES = [
 
 export default function HomeScreen() {
   const [username, setUsername] = useState('');
-  const { signOut } = useAuth();
 
   useEffect(() => {
     fetchProfile();
@@ -56,11 +54,6 @@ export default function HomeScreen() {
             </View>
           </TouchableOpacity>
         ))}
-
-        <TouchableOpacity style={styles.signOutButton} onPress={signOut}>
-          <LogOut size={18} color="#fff" />
-          <Text style={styles.signOutText}>Sair</Text>
-        </TouchableOpacity>
       </ScrollView>
 
       <BottomNavBar activeRoute="index" />
@@ -118,19 +111,5 @@ const styles = StyleSheet.create({
     color: '#1E3A8A',
     fontWeight: '600',
   },
-  signOutButton: {
-    marginTop: 16,
-    backgroundColor: '#dc2626',
-    borderRadius: 8,
-    paddingVertical: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 8,
-  },
-  signOutText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
+  
 });

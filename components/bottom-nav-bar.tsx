@@ -3,7 +3,7 @@ import { Home, NotebookPen, BarChart3, Calculator } from 'lucide-react-native';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-type Route = 'index' | 'exercises' | 'dashboard' | 'calculator' | 'simple-interest' | 'percentage' | 'simple-interest-summary' | 'simple-interest-exercises' | 'percentage-summary' | 'percentage-exercises';
+type Route = 'index' | 'exercises' | 'dashboard' | 'calculator' | 'simple-interest' | 'percentage' | 'simple-interest-summary' | 'simple-interest-exercises' | 'percentage-summary' | 'percentage-exercises' | 'profile';
 
 type Props = {
   activeRoute: Route;
