@@ -155,7 +155,7 @@ export default function SimpleInterestExercisesScreen() {
         )}
       </ScrollView>
 
-      <BottomNavBar activeRoute="simple-interest" />
+      <BottomNavBar activeRoute="simple-interest-exercises" />
     </View>
   );
 }
