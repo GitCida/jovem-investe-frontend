@@ -280,6 +280,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     alignItems: 'center',
     marginTop: 8,
+    marginBottom: 50,
   },
   submitButtonDisabled: {
     backgroundColor: '#94A3B8',
