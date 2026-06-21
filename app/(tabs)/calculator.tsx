@@ -77,7 +77,7 @@ export default function CompoundInterestScreen() {
           <View style={styles.inputRow}>
             <TextInput
               style={styles.inputFlex}
-              placeholder="0,00"
+              placeholder="0"
               placeholderTextColor="#aaa"
               keyboardType="numeric"
               value={rate}
@@ -91,7 +91,7 @@ export default function CompoundInterestScreen() {
           <Text style={styles.label}>PERÍODO ( T )</Text>
           <TextInput
             style={styles.input}
-            placeholder="em meses"
+            placeholder="Em meses"
             placeholderTextColor="#aaa"
             keyboardType="numeric"
             value={period}
